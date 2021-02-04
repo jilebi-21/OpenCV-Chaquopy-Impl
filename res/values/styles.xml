@@ -1,0 +1,14 @@
+<resources>
+
+    <style name="Base" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/primary_color</item>
+        <item name="colorAccent">@color/primary_color</item>
+        <item name="android:colorBackground">@color/surface_color</item>
+        <item name="android:statusBarColor">@color/surface_color</item>
+        <item name="android:windowLightStatusBar">@bool/is_light</item>
+        <item name="android:navigationBarColor">#FFFFFF</item>
+    </style>
+
+    <style name="BaseTheme" parent="Base" />
+
+</resources>
