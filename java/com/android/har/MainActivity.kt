@@ -58,7 +58,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun recordVideo() {
-        Log.d(TAG, "recordVideo: ")
+        val intent = Intent(this, CameraActivity::class.java)
+        startActivity(intent)
     }
 
     private fun isPermGranted(perm: String, code: Int): Boolean {
