@@ -1,7 +1,6 @@
 package com.android.har
 
-import android.Manifest.permission.CAMERA
-import android.Manifest.permission.READ_EXTERNAL_STORAGE
+import android.Manifest.permission.*
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
@@ -21,6 +20,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private val REQUEST_STORAGE_PERMISSION = 100
     private val REQUEST_CAMERA_PERMISSION = 101
     private val REQUEST_PICK_VIDEO = 102
+    private val REQUEST_WRITE_STORAGE = 103
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,7 +44,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             R.id.live_video_fab -> {
                 Log.d(TAG, "Camera permission granted")
                 if (isPermGranted(CAMERA, REQUEST_CAMERA_PERMISSION)) {
-                    recordVideo()
+                    if (isPermGranted(WRITE_EXTERNAL_STORAGE, REQUEST_WRITE_STORAGE)) {
+                        recordVideo()
+                    }
                 }
             }
         }
