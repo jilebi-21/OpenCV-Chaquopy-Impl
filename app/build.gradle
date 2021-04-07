@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
+apply plugin: 'com.chaquo.python'
 
 android {
     compileSdkVersion 30
@@ -11,11 +12,28 @@ android {
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
+
+        python {
+            pip {
+                install "six"
+            }
+        }
+        ndk {
+            abiFilters "armeabi-v7a", "arm64-v8a", "x86", "x86_64"
+        }
     }
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    sourceSets {
+        main {
+            python {
+                srcDirs = ["src/main/python"]
+            }
+        }
     }
 
     buildTypes {
@@ -33,6 +51,7 @@ dependencies {
     implementation 'com.google.android.material:material:1.3.0'
     implementation "androidx.core:core-ktx:1.3.2"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
 }
 
 repositories {
